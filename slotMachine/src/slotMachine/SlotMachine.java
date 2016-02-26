@@ -5,6 +5,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 public class SlotMachine {
 
@@ -87,16 +88,16 @@ public class SlotMachine {
 		lblVincitanumero.setText("0.0");
 		
 		Label lblA = new Label(shlZhoujackMachines, SWT.NONE);
-		lblA.setBounds(30, 118, 55, 15);
-		lblA.setText("A");
+		lblA.setImage(SWTResourceManager.getImage("crome.jpg"));
+		lblA.setBounds(27, 92, 80, 80);
 		
 		Label lblB = new Label(shlZhoujackMachines, SWT.NONE);
-		lblB.setBounds(192, 118, 55, 15);
-		lblB.setText("B");
+		lblB.setImage(SWTResourceManager.getImage("explorer.png"));
+		lblB.setBounds(172, 92, 80, 80);
 		
 		Label lblC = new Label(shlZhoujackMachines, SWT.NONE);
-		lblC.setBounds(349, 118, 55, 15);
-		lblC.setText("C");
+		lblC.setImage(SWTResourceManager.getImage("nasa.png"));
+		lblC.setBounds(305, 92, 80, 80);
 		
 		Label lblTitolo = new Label(shlZhoujackMachines, SWT.NONE);
 		lblTitolo.setBounds(192, 10, 55, 15);
