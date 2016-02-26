@@ -44,6 +44,8 @@ public class SlotMachine {
 	 */
 	protected void createContents() {
 		shlZhoujackMachines = new Shell();
+		shlZhoujackMachines.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		shlZhoujackMachines.setImage(SWTResourceManager.getImage("icon.png"));
 		shlZhoujackMachines.setSize(450, 400);
 		shlZhoujackMachines.setText("ZHOU&JACK MACHINES");
 		
@@ -64,26 +66,32 @@ public class SlotMachine {
 		btnBetAll.setText("BET ALL");
 		
 		Label lblSaldo = new Label(shlZhoujackMachines, SWT.NONE);
+		lblSaldo.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblSaldo.setBounds(10, 255, 55, 15);
 		lblSaldo.setText("SALDO");
 		
 		Label lblPuntata = new Label(shlZhoujackMachines, SWT.NONE);
+		lblPuntata.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblPuntata.setBounds(192, 255, 55, 15);
 		lblPuntata.setText("PUNTATA");
 		
 		Label lblVincita = new Label(shlZhoujackMachines, SWT.NONE);
+		lblVincita.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblVincita.setBounds(349, 255, 55, 15);
 		lblVincita.setText("VINCITA");
 		
 		Label lblSaldonumero = new Label(shlZhoujackMachines, SWT.NONE);
+		lblSaldonumero.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblSaldonumero.setBounds(10, 234, 55, 15);
 		lblSaldonumero.setText("0.0");
 		
 		Label lblPuntatanumero = new Label(shlZhoujackMachines, SWT.NONE);
+		lblPuntatanumero.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblPuntatanumero.setBounds(192, 234, 55, 15);
 		lblPuntatanumero.setText("0.0");
 		
 		Label lblVincitanumero = new Label(shlZhoujackMachines, SWT.NONE);
+		lblVincitanumero.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblVincitanumero.setBounds(349, 234, 55, 15);
 		lblVincitanumero.setText("0.0");
 		
@@ -100,8 +108,10 @@ public class SlotMachine {
 		lblC.setBounds(305, 92, 80, 80);
 		
 		Label lblTitolo = new Label(shlZhoujackMachines, SWT.NONE);
-		lblTitolo.setBounds(192, 10, 55, 15);
-		lblTitolo.setText("TITOLO");
+		lblTitolo.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		lblTitolo.setFont(SWTResourceManager.getFont("Trajan Pro", 16, SWT.BOLD));
+		lblTitolo.setBounds(53, 10, 332, 34);
+		lblTitolo.setText("JACK  and ZHOU Machines");
 
 	}
 }
