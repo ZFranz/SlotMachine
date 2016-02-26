@@ -3,9 +3,18 @@ package slotMachine;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.sound.sampled.*;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 
 public class SlotMachine {
 
@@ -52,6 +61,27 @@ public class SlotMachine {
 		btnReset.setText("RESET");
 		
 		Button btnSpin = new Button(shlZhoujackMachines, SWT.NONE);
+		btnSpin.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				try {
+			         // Open an audio input stream.           
+			          File soundFile = new File("sound.mp3"); //you could also get the sound file with an URL
+			          AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
+			         // Get a sound clip resource.
+			         Clip clip = AudioSystem.getClip();
+			         // Open audio clip and load samples from the audio input stream.
+			         clip.open(audioIn);
+			         clip.start();
+			      } catch (UnsupportedAudioFileException e1) {
+			         e1.printStackTrace();
+			      } catch (IOException e1) {
+			         e1.printStackTrace();
+			      } catch (LineUnavailableException e1) {
+			         e1.printStackTrace();
+			      }
+			}
+		});
 		btnSpin.setBounds(349, 302, 75, 50);
 		btnSpin.setText("SPIN");
 		
