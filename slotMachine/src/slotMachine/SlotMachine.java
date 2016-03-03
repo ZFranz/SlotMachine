@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+
 import javax.sound.sampled.*;
 
 import org.eclipse.swt.SWT;
@@ -19,6 +21,12 @@ import org.eclipse.swt.events.SelectionEvent;
 public class SlotMachine {
 
 	protected Shell shlZhoujackMachines;
+	ArrayList<String> immagini = new ArrayList<String>(){{
+		add("crome.jpg");
+		add("explorer.png");
+		add("nasa.png");
+	}};
+	private int k = 0;
 
 	/**
 	 * Launch the application.
@@ -58,43 +66,6 @@ public class SlotMachine {
 		shlZhoujackMachines.setSize(450, 400);
 		shlZhoujackMachines.setText("ZHOU&JACK MACHINES");
 		
-		Button btnReset = new Button(shlZhoujackMachines, SWT.NONE);
-		btnReset.setBounds(10, 302, 75, 50);
-		btnReset.setText("RESET");
-		
-		Button btnSpin = new Button(shlZhoujackMachines, SWT.NONE);
-		btnSpin.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				try {
-			         // Open an audio input stream.           
-			          File soundFile = new File("sound.mp3"); //you could also get the sound file with an URL
-			          AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);              
-			         // Get a sound clip resource.
-			         Clip clip = AudioSystem.getClip();
-			         // Open audio clip and load samples from the audio input stream.
-			         clip.open(audioIn);
-			         clip.start();
-			      } catch (UnsupportedAudioFileException e1) {
-			         e1.printStackTrace();
-			      } catch (IOException e1) {
-			         e1.printStackTrace();
-			      } catch (LineUnavailableException e1) {
-			         e1.printStackTrace();
-			      }
-			}
-		});
-		btnSpin.setBounds(349, 302, 75, 50);
-		btnSpin.setText("SPIN");
-		
-		Button btnBet = new Button(shlZhoujackMachines, SWT.NONE);
-		btnBet.setBounds(91, 302, 75, 50);
-		btnBet.setText("BET");
-		
-		Button btnBetAll = new Button(shlZhoujackMachines, SWT.NONE);
-		btnBetAll.setBounds(172, 302, 75, 50);
-		btnBetAll.setText("BET ALL");
-		
 		Label lblSaldo = new Label(shlZhoujackMachines, SWT.NONE);
 		lblSaldo.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblSaldo.setBounds(10, 255, 55, 15);
@@ -125,15 +96,15 @@ public class SlotMachine {
 		lblVincitanumero.setBounds(349, 234, 55, 15);
 		lblVincitanumero.setText("0.0");
 		
-		Label lblA = new Label(shlZhoujackMachines, SWT.NONE);
+		Label lblA = new Label(shlZhoujackMachines, SWT.BORDER | SWT.WRAP);
 		lblA.setImage(SWTResourceManager.getImage("crome.jpg"));
 		lblA.setBounds(27, 92, 80, 80);
 		
-		Label lblB = new Label(shlZhoujackMachines, SWT.NONE);
+		Label lblB = new Label(shlZhoujackMachines, SWT.BORDER | SWT.WRAP);
 		lblB.setImage(SWTResourceManager.getImage("explorer.png"));
 		lblB.setBounds(172, 92, 80, 80);
 		
-		Label lblC = new Label(shlZhoujackMachines, SWT.NONE);
+		Label lblC = new Label(shlZhoujackMachines, SWT.BORDER | SWT.WRAP);
 		lblC.setImage(SWTResourceManager.getImage("nasa.png"));
 		lblC.setBounds(305, 92, 80, 80);
 		
@@ -143,5 +114,30 @@ public class SlotMachine {
 		lblTitolo.setBounds(53, 10, 332, 34);
 		lblTitolo.setText("JACK  and ZHOU Machines");
 
+		Button btnReset = new Button(shlZhoujackMachines, SWT.NONE);
+		btnReset.setBounds(10, 302, 75, 50);
+		btnReset.setText("RESET");
+		
+		Button btnSpin = new Button(shlZhoujackMachines, SWT.NONE);
+		btnSpin.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				lblA.setImage(SWTResourceManager.getImage(immagini.get(k)));
+				k++;
+				if(k == 3) {
+					k = 0;
+				}
+			}
+		});
+		btnSpin.setBounds(349, 302, 75, 50);
+		btnSpin.setText("SPIN");
+		
+		Button btnBet = new Button(shlZhoujackMachines, SWT.NONE);
+		btnBet.setBounds(91, 302, 75, 50);
+		btnBet.setText("BET");
+		
+		Button btnBetAll = new Button(shlZhoujackMachines, SWT.NONE);
+		btnBetAll.setBounds(172, 302, 75, 50);
+		btnBetAll.setText("BET ALL");
 	}
 }
