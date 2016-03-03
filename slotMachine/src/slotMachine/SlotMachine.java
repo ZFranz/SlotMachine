@@ -27,6 +27,7 @@ public class SlotMachine {
 		add("nasa.png");
 	}};
 	private int k = 0;
+	private int m = 0;
 
 	/**
 	 * Launch the application.
