@@ -28,8 +28,7 @@ public class SlotMachine {
 		add("nasa.png");
 	}};
 	private int k = 0;
-	private int j = 1;
-	private int l = 2;
+	private int m = 0;
 
 	/**
 	 * Launch the application.
@@ -95,93 +94,11 @@ public class SlotMachine {
 		btnSpin.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				
-				Thread thread1 = new Thread() {
-					@Override
-					public void run() {
-						// lblSpin.setBackground(SWTResourceManager.getColor(SWT.COLOR_YELLOW));
-
-						for (int i = 0; i < 20; i++) {
-							Display.getDefault().asyncExec(new Runnable() {
-								public void run() {
-									k++;
-									if(k == 3) {
-										k = 0;
-									}
-									lblA.setImage(SWTResourceManager.getImage(immagini.get(k)));
-								}
-							});
-							try {
-								Thread.sleep(200);
-							} catch (InterruptedException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-						}
-						k = (int)(Math.random() * 3);
-						lblA.setImage(SWTResourceManager.getImage(immagini.get(k)));
-					}
-
-				};
-				thread1.start();
-				
-				Thread thread2 = new Thread() {
-					@Override
-					public void run() {
-						// lblSpin.setBackground(SWTResourceManager.getColor(SWT.COLOR_YELLOW));
-
-						for (int i = 0; i < 20; i++) {
-							Display.getDefault().asyncExec(new Runnable() {
-								public void run() {
-									j++;
-									if(j == 3) {
-										j = 0;
-									}
-									lblB.setImage(SWTResourceManager.getImage(immagini.get(j)));
-								}
-							});
-							try {
-								Thread.sleep(200);
-							} catch (InterruptedException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-						}
-						j = (int)(Math.random() * 3);
-						lblB.setImage(SWTResourceManager.getImage(immagini.get(j)));
-					}
-
-				};
-				thread2.start();
-				
-				Thread thread3 = new Thread() {
-					@Override
-					public void run() {
-						// lblSpin.setBackground(SWTResourceManager.getColor(SWT.COLOR_YELLOW));
-
-						for (int i = 0; i < 20; i++) {
-							Display.getDefault().asyncExec(new Runnable() {
-								public void run() {
-									l++;
-									if(l == 3) {
-										l = 0;
-									}
-									lblC.setImage(SWTResourceManager.getImage(immagini.get(l)));
-								}
-							});
-							try {
-								Thread.sleep(200);
-							} catch (InterruptedException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							}
-						}
-						l = (int)(Math.random() * 3);
-						lblA.setImage(SWTResourceManager.getImage(immagini.get(l)));
-					}
-
-				};
-				thread3.start();
+				lblA.setImage(SWTResourceManager.getImage(immagini.get(k)));
+				k++;
+				if(k == 3) {
+					k = 0;
+				}
 			}
 		});
 		btnSpin.setBounds(71, 275, 126, 50);
@@ -196,37 +113,37 @@ public class SlotMachine {
 		btnBetAll.setText("BET ALL");
 		
 		Composite composite = new Composite(shlZhoujackMachines, SWT.NONE);
-		composite.setBackground(SWTResourceManager.getColor(255, 153, 102));
+		composite.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		composite.setBounds(10, 149, 252, 64);
 		
 		Label lblSaldonumero = new Label(composite, SWT.NONE);
 		lblSaldonumero.setBounds(187, 10, 55, 15);
-		lblSaldonumero.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		lblSaldonumero.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		lblSaldonumero.setText("0.0");
 		
 		Label lblSaldo = new Label(composite, SWT.NONE);
 		lblSaldo.setBounds(187, 39, 55, 15);
-		lblSaldo.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		lblSaldo.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		lblSaldo.setText("SALDO");
 		
 		Label lblPuntata = new Label(composite, SWT.NONE);
 		lblPuntata.setBounds(71, 39, 55, 15);
-		lblPuntata.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		lblPuntata.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		lblPuntata.setText("PUNTATA");
 		
 		Label lblPuntatanumero = new Label(composite, SWT.NONE);
 		lblPuntatanumero.setBounds(71, 10, 55, 15);
-		lblPuntatanumero.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		lblPuntatanumero.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		lblPuntatanumero.setText("0.0");
 		
 		Label lblVincita = new Label(composite, SWT.NONE);
 		lblVincita.setBounds(10, 39, 55, 15);
-		lblVincita.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		lblVincita.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		lblVincita.setText("VINCITA");
 		
 		Label lblVincitanumero = new Label(composite, SWT.NONE);
 		lblVincitanumero.setBounds(10, 10, 55, 15);
-		lblVincitanumero.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		lblVincitanumero.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		lblVincitanumero.setText("0.0");
 	}
 }
