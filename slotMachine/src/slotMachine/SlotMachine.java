@@ -164,6 +164,7 @@ public class SlotMachine {
 		Button btnSpin = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT | SWT.CENTER);
 		Button btnBet = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
 		Button btnBetAll = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
+		Button btnOops = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
 		
 		
 		btnSpin.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
@@ -174,6 +175,7 @@ public class SlotMachine {
 				btnReset.setEnabled(false);
 				btnBet.setEnabled(false);
 				btnBetAll.setEnabled(false);
+				btnOops.setEnabled(false);
 				
 				Thread thread1 = new Thread() {
 					@Override
@@ -271,6 +273,7 @@ public class SlotMachine {
 								btnReset.setEnabled(true);
 								btnBet.setEnabled(true);
 								btnBetAll.setEnabled(true);
+								btnOops.setEnabled(true);
 								
 								//vinto o perso
 								if (l==k && k==j) {
@@ -279,6 +282,7 @@ public class SlotMachine {
 									puntata = 0;
 									lblPuntatanumero.setText(String.valueOf(puntata));
 									lblVincitanumero.setText(String.valueOf(vincita));
+									lblSaldonumero.setText(String.valueOf(saldo));
 									System.out.println("hai vinto");
 								} else {
 									puntata = 0;
@@ -350,7 +354,18 @@ public class SlotMachine {
 		btnBetAll.setBounds(187, 219, 75, 50);
 		btnBetAll.setText("BET ALL");
 		
-		Button btnOops = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
+		
+		btnOops.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (puntata > 0) {
+					puntata = puntata - 1;
+					saldo = saldo + 1;
+					lblSaldonumero.setText(String.valueOf(saldo));
+					lblPuntatanumero.setText(String.valueOf(puntata));
+				}
+			}
+		});
 		btnOops.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
 		btnOops.setBounds(96, 244, 80, 25);
 		btnOops.setText("OOPS");
