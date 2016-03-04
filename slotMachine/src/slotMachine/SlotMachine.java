@@ -31,6 +31,10 @@ public class SlotMachine {
 	private int k = 1;
 	private int l = 2;
 	private final static int giri = 20;
+	private int saldo = 10;
+	private int puntata = 0;
+	private int vincita = 0;
+	private int temp = 0;
 
 	/**
 	 * Launch the application.
@@ -69,62 +73,82 @@ public class SlotMachine {
 		shlZhoujackMachines.setImage(SWTResourceManager.getImage("icon.png"));
 		shlZhoujackMachines.setSize(290, 381);
 		shlZhoujackMachines.setText("ZHOU&JACK MACHINES");
-		
+
 		Label lblA = new Label(shlZhoujackMachines, SWT.BORDER | SWT.WRAP);
 		lblA.setImage(SWTResourceManager.getImage("crome.jpg"));
 		lblA.setBounds(10, 63, 80, 80);
-		
+
 		Label lblB = new Label(shlZhoujackMachines, SWT.BORDER | SWT.WRAP);
 		lblB.setImage(SWTResourceManager.getImage("explorer.png"));
 		lblB.setBounds(96, 63, 80, 80);
-		
+
 		Label lblC = new Label(shlZhoujackMachines, SWT.BORDER | SWT.WRAP);
 		lblC.setImage(SWTResourceManager.getImage("nasa.png"));
 		lblC.setBounds(182, 63, 80, 80);
-		
+
 		Label lblTitolo = new Label(shlZhoujackMachines, SWT.NONE);
 		lblTitolo.setBackground(SWTResourceManager.getColor(255, 255, 204));
 		lblTitolo.setFont(SWTResourceManager.getFont("Segoe UI Light", 15, SWT.BOLD));
 		lblTitolo.setBounds(71, 23, 128, 34);
 		lblTitolo.setText("CHINA SLOTS");
-		
+
 		Composite composite = new Composite(shlZhoujackMachines, SWT.NONE);
 		composite.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		composite.setBounds(10, 149, 252, 64);
-		
+
 		Label lblSaldonumero = new Label(composite, SWT.NONE);
 		lblSaldonumero.setBounds(187, 10, 55, 15);
 		lblSaldonumero.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		lblSaldonumero.setText("0.0");
-		
+
 		Label lblSaldo = new Label(composite, SWT.NONE);
 		lblSaldo.setBounds(187, 39, 55, 15);
 		lblSaldo.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		lblSaldo.setText("SALDO");
-		
+
 		Label lblPuntata = new Label(composite, SWT.NONE);
 		lblPuntata.setBounds(71, 39, 55, 15);
 		lblPuntata.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		lblPuntata.setText("PUNTATA");
-		
+
 		Label lblPuntatanumero = new Label(composite, SWT.NONE);
 		lblPuntatanumero.setBounds(71, 10, 55, 15);
 		lblPuntatanumero.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		lblPuntatanumero.setText("0.0");
-		
+
 		Label lblVincita = new Label(composite, SWT.NONE);
 		lblVincita.setBounds(10, 39, 55, 15);
 		lblVincita.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		lblVincita.setText("VINCITA");
-		
+
 		Label lblVincitanumero = new Label(composite, SWT.NONE);
 		lblVincitanumero.setBounds(10, 10, 55, 15);
 		lblVincitanumero.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		lblVincitanumero.setText("0.0");
-		
+
 		Button btnReset = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
+		btnReset.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				saldo = 10;
+				vincita = 0;
+				puntata = 0;
+				
+				lblVincitanumero.setText(String.valueOf(vincita));
+				lblSaldonumero.setText(String.valueOf(saldo));
+				lblPuntatanumero.setText(String.valueOf(puntata));
+			}
+		});
 		btnReset.setBounds(10, 219, 75, 50);
 		btnReset.setText("RESET");
+		
+		//inizalizzazione schermata
+		lblVincitanumero.setText(String.valueOf(vincita));
+		lblSaldonumero.setText(String.valueOf(saldo));
+		lblPuntatanumero.setText(String.valueOf(puntata));
+		
+		
+		
 		
 		Button btnSpin = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
 		btnSpin.addSelectionListener(new SelectionAdapter() {
@@ -162,7 +186,7 @@ public class SlotMachine {
 
 				};
 				thread1.start();
-				
+
 				Thread thread2 = new Thread() {
 					@Override
 					public void run() {
@@ -194,7 +218,7 @@ public class SlotMachine {
 
 				};
 				thread2.start();
-				
+
 				Thread thread3 = new Thread() {
 					@Override
 					public void run() {
@@ -227,16 +251,57 @@ public class SlotMachine {
 
 				};
 				thread3.start();
+				
+				if(temp == 1) {
+					if (l==k && k==j) {
+						vincita = puntata *2;
+						saldo = saldo + vincita;
+						lblVincitanumero.setText(String.valueOf(vincita));
+						System.out.println("hai vinto");
+					} else {
+						puntata = 0;
+						lblPuntatanumero.setText(String.valueOf(puntata));
+						System.out.println("hai perso");
+					}
+					temp = 0;
+				}
+				
 			}
 		});
 		btnSpin.setBounds(71, 275, 126, 50);
 		btnSpin.setText("SPIN");
-		
+
 		Button btnBet = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
+		btnBet.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if(saldo>0){
+					saldo = saldo-1;
+					lblSaldonumero.setText(String.valueOf(saldo));
+
+					puntata=puntata + 1;
+					lblPuntatanumero.setText(String.valueOf(puntata));
+				}
+
+			}
+		});
 		btnBet.setBounds(96, 219, 75, 50);
 		btnBet.setText("BET");
-		
+
 		Button btnBetAll = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
+		btnBetAll.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				puntata = puntata + saldo;
+				saldo = 0;
+				System.out.println("ALL IN!!");
+				
+				lblVincitanumero.setText(String.valueOf(vincita));
+				lblSaldonumero.setText(String.valueOf(saldo));
+				lblPuntatanumero.setText(String.valueOf(puntata));
+				
+			}
+		});
 		btnBetAll.setBounds(182, 219, 75, 50);
 		btnBetAll.setText("BET ALL");
 	}
