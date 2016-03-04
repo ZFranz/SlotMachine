@@ -18,6 +18,8 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 
 public class SlotMachine {
 
@@ -35,6 +37,9 @@ public class SlotMachine {
 	private int puntata = 0;
 	private int vincita = 0;
 	private int temp = 0;
+	private int a = 0;
+	private int b = 0;
+	private int c = 0;
 
 	/**
 	 * Launch the application.
@@ -71,8 +76,8 @@ public class SlotMachine {
 		shlZhoujackMachines = new Shell();
 		shlZhoujackMachines.setBackground(SWTResourceManager.getColor(255, 255, 204));
 		shlZhoujackMachines.setImage(SWTResourceManager.getImage("icon.png"));
-		shlZhoujackMachines.setSize(290, 381);
-		shlZhoujackMachines.setText("ZHOU&JACK MACHINES");
+		shlZhoujackMachines.setSize(290, 372);
+		shlZhoujackMachines.setText("CHINA SLOTS");
 
 		Label lblA = new Label(shlZhoujackMachines, SWT.BORDER | SWT.WRAP);
 		lblA.setImage(SWTResourceManager.getImage("crome.jpg"));
@@ -88,11 +93,11 @@ public class SlotMachine {
 
 		Label lblTitolo = new Label(shlZhoujackMachines, SWT.NONE);
 		lblTitolo.setBackground(SWTResourceManager.getColor(255, 255, 204));
-		lblTitolo.setFont(SWTResourceManager.getFont("Segoe UI Light", 15, SWT.BOLD));
-		lblTitolo.setBounds(71, 23, 128, 34);
+		lblTitolo.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 17, SWT.NORMAL));
+		lblTitolo.setBounds(71, 10, 134, 34);
 		lblTitolo.setText("CHINA SLOTS");
 
-		Composite composite = new Composite(shlZhoujackMachines, SWT.NONE);
+		Composite composite = new Composite(shlZhoujackMachines, SWT.BORDER | SWT.EMBEDDED);
 		composite.setBackground(SWTResourceManager.getColor(255, 204, 102));
 		composite.setBounds(10, 149, 252, 64);
 
@@ -155,15 +160,21 @@ public class SlotMachine {
 		lblSaldonumero.setText(String.valueOf(saldo));
 		lblPuntatanumero.setText(String.valueOf(puntata));
 		
+		//dichiarazione tasti
+		Button btnSpin = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT | SWT.CENTER);
+		Button btnBet = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
+		Button btnBetAll = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
 		
 		
-		
-		Button btnSpin = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
 		btnSpin.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
 		btnSpin.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				btnSpin.setEnabled(false);
+				btnReset.setEnabled(false);
+				btnBet.setEnabled(false);
+				btnBetAll.setEnabled(false);
+				
 				Thread thread1 = new Thread() {
 					@Override
 					public void run() {
@@ -177,6 +188,7 @@ public class SlotMachine {
 								public void run() {
 									lblA.setImage(SWTResourceManager.getImage(immagini.get(j)));
 								}
+							
 							});
 							try {
 								Thread.sleep(250);
@@ -185,6 +197,7 @@ public class SlotMachine {
 								e1.printStackTrace();
 							}
 						}
+						a = 1;
 						j = (int)(Math.random() * 3);
 						Display.getDefault().asyncExec(new Runnable() {
 							public void run() {
@@ -217,6 +230,7 @@ public class SlotMachine {
 								e1.printStackTrace();
 							}
 						}
+						c = 1;
 						k = (int)(Math.random() * 3);
 						Display.getDefault().asyncExec(new Runnable() {
 							public void run() {
@@ -254,6 +268,24 @@ public class SlotMachine {
 							public void run() {
 								lblC.setImage(SWTResourceManager.getImage(immagini.get(l)));
 								btnSpin.setEnabled(true);
+								btnReset.setEnabled(true);
+								btnBet.setEnabled(true);
+								btnBetAll.setEnabled(true);
+								
+								//vinto o perso
+								if (l==k && k==j) {
+									vincita = puntata *2;
+									saldo = saldo + vincita;
+									puntata = 0;
+									lblPuntatanumero.setText(String.valueOf(puntata));
+									lblVincitanumero.setText(String.valueOf(vincita));
+									System.out.println("hai vinto");
+								} else {
+									puntata = 0;
+									lblPuntatanumero.setText(String.valueOf(puntata));
+									lblSaldonumero.setText(String.valueOf(saldo));
+									System.out.println("hai perso");
+								}
 							}
 						});
 					}
@@ -261,26 +293,28 @@ public class SlotMachine {
 				};
 				thread3.start();
 				
-				if(temp == 1) {
-					if (l==k && k==j) {
-						vincita = puntata *2;
-						saldo = saldo + vincita;
-						lblVincitanumero.setText(String.valueOf(vincita));
-						System.out.println("hai vinto");
-					} else {
-						puntata = 0;
-						lblPuntatanumero.setText(String.valueOf(puntata));
-						System.out.println("hai perso");
-					}
-					temp = 0;
-				}
-				
 			}
 		});
-		btnSpin.setBounds(71, 275, 126, 50);
+		btnSpin.setBounds(71, 275, 128, 50);
 		btnSpin.setText("SPIN");
 
-		Button btnBet = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
+
+		btnBet.setSelection(true);
+		btnBet.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println("tasto premuto");
+				if(e.keyCode == 119){
+					if(saldo>0){
+						saldo = saldo-1;
+						lblSaldonumero.setText(String.valueOf(saldo));
+
+						puntata=puntata + 1;
+						lblPuntatanumero.setText(String.valueOf(puntata));
+					}
+				}
+			}
+		});
 		btnBet.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
 		btnBet.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -295,10 +329,10 @@ public class SlotMachine {
 
 			}
 		});
-		btnBet.setBounds(96, 219, 75, 50);
+		btnBet.setBounds(96, 219, 80, 25);
 		btnBet.setText("BET");
 
-		Button btnBetAll = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
+		
 		btnBetAll.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
 		btnBetAll.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -313,7 +347,12 @@ public class SlotMachine {
 				
 			}
 		});
-		btnBetAll.setBounds(182, 219, 75, 50);
+		btnBetAll.setBounds(187, 219, 75, 50);
 		btnBetAll.setText("BET ALL");
+		
+		Button btnOops = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
+		btnOops.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
+		btnOops.setBounds(96, 244, 80, 25);
+		btnOops.setText("OOPS");
 	}
 }
