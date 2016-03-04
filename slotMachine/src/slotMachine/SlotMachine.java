@@ -27,8 +27,9 @@ public class SlotMachine {
 		add("explorer.png");
 		add("nasa.png");
 	}};
-	private int k = 0;
-	private int m = 0;
+	private int j = 0;
+	private int k = 1;
+	private int l = 2;
 
 	/**
 	 * Launch the application.
@@ -94,11 +95,92 @@ public class SlotMachine {
 		btnSpin.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				lblA.setImage(SWTResourceManager.getImage(immagini.get(k)));
-				k++;
-				if(k == 3) {
-					k = 0;
-				}
+				Thread thread1 = new Thread() {
+					@Override
+					public void run() {
+						// lblSpin.setBackground(SWTResourceManager.getColor(SWT.COLOR_YELLOW));
+
+						for (int i = 0; i < 10; i++) {
+							Display.getDefault().asyncExec(new Runnable() {
+								public void run() {
+									j++;
+									if(j == 3) {
+										j = 0;
+									}
+									lblA.setImage(SWTResourceManager.getImage(immagini.get(j)));
+								}
+							});
+							try {
+								Thread.sleep(250);
+							} catch (InterruptedException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						}
+						/*j = (int)(Math.random() * 3);
+						lblA.setImage(SWTResourceManager.getImage(immagini.get(j)));*/
+					}
+
+				};
+				thread1.start();
+				
+				/*Thread thread2 = new Thread() {
+					@Override
+					public void run() {
+						// lblSpin.setBackground(SWTResourceManager.getColor(SWT.COLOR_YELLOW));
+
+						for (int i = 0; i < 10; i++) {
+							Display.getDefault().asyncExec(new Runnable() {
+								public void run() {
+									lblB.setImage(SWTResourceManager.getImage(immagini.get(k)));
+									k++;
+									if(k == 3) {
+										k = 0;
+									}
+								}
+							});
+							try {
+								Thread.sleep(250);
+							} catch (InterruptedException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						}
+						k = (int)(Math.random() * 3);
+						lblB.setImage(SWTResourceManager.getImage(immagini.get(k)));
+					}
+
+				};
+				thread2.start();*/
+				
+				/*Thread thread3 = new Thread() {
+					@Override
+					public void run() {
+						// lblSpin.setBackground(SWTResourceManager.getColor(SWT.COLOR_YELLOW));
+
+						for (int i = 0; i < 10; i++) {
+							Display.getDefault().asyncExec(new Runnable() {
+								public void run() {
+									lblC.setImage(SWTResourceManager.getImage(immagini.get(l)));
+									l++;
+									if(l == 3) {
+										l = 0;
+									}
+								}
+							});
+							try {
+								Thread.sleep(250);
+							} catch (InterruptedException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						}
+						l = (int)(Math.random() * 3);
+						lblC.setImage(SWTResourceManager.getImage(immagini.get(l)));
+					}
+
+				};
+				thread3.start();*/
 			}
 		});
 		btnSpin.setBounds(71, 275, 126, 50);
