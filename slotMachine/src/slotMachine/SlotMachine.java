@@ -87,7 +87,41 @@ public class SlotMachine {
 		lblTitolo.setFont(SWTResourceManager.getFont("Segoe UI Light", 15, SWT.BOLD));
 		lblTitolo.setBounds(71, 23, 128, 34);
 		lblTitolo.setText("CHINA SLOTS");
-
+		
+		Composite composite = new Composite(shlZhoujackMachines, SWT.NONE);
+		composite.setBackground(SWTResourceManager.getColor(255, 204, 102));
+		composite.setBounds(10, 149, 252, 64);
+		
+		Label lblSaldonumero = new Label(composite, SWT.NONE);
+		lblSaldonumero.setBounds(187, 10, 55, 15);
+		lblSaldonumero.setBackground(SWTResourceManager.getColor(255, 204, 102));
+		lblSaldonumero.setText("0.0");
+		
+		Label lblSaldo = new Label(composite, SWT.NONE);
+		lblSaldo.setBounds(187, 39, 55, 15);
+		lblSaldo.setBackground(SWTResourceManager.getColor(255, 204, 102));
+		lblSaldo.setText("SALDO");
+		
+		Label lblPuntata = new Label(composite, SWT.NONE);
+		lblPuntata.setBounds(71, 39, 55, 15);
+		lblPuntata.setBackground(SWTResourceManager.getColor(255, 204, 102));
+		lblPuntata.setText("PUNTATA");
+		
+		Label lblPuntatanumero = new Label(composite, SWT.NONE);
+		lblPuntatanumero.setBounds(71, 10, 55, 15);
+		lblPuntatanumero.setBackground(SWTResourceManager.getColor(255, 204, 102));
+		lblPuntatanumero.setText("0.0");
+		
+		Label lblVincita = new Label(composite, SWT.NONE);
+		lblVincita.setBounds(10, 39, 55, 15);
+		lblVincita.setBackground(SWTResourceManager.getColor(255, 204, 102));
+		lblVincita.setText("VINCITA");
+		
+		Label lblVincitanumero = new Label(composite, SWT.NONE);
+		lblVincitanumero.setBounds(10, 10, 55, 15);
+		lblVincitanumero.setBackground(SWTResourceManager.getColor(255, 204, 102));
+		lblVincitanumero.setText("0.0");
+		
 		Button btnReset = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
 		btnReset.setBounds(10, 219, 75, 50);
 		btnReset.setText("RESET");
@@ -205,39 +239,5 @@ public class SlotMachine {
 		Button btnBetAll = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT);
 		btnBetAll.setBounds(182, 219, 75, 50);
 		btnBetAll.setText("BET ALL");
-		
-		Composite composite = new Composite(shlZhoujackMachines, SWT.NONE);
-		composite.setBackground(SWTResourceManager.getColor(255, 204, 102));
-		composite.setBounds(10, 149, 252, 64);
-		
-		Label lblSaldonumero = new Label(composite, SWT.NONE);
-		lblSaldonumero.setBounds(187, 10, 55, 15);
-		lblSaldonumero.setBackground(SWTResourceManager.getColor(255, 204, 102));
-		lblSaldonumero.setText("0.0");
-		
-		Label lblSaldo = new Label(composite, SWT.NONE);
-		lblSaldo.setBounds(187, 39, 55, 15);
-		lblSaldo.setBackground(SWTResourceManager.getColor(255, 204, 102));
-		lblSaldo.setText("SALDO");
-		
-		Label lblPuntata = new Label(composite, SWT.NONE);
-		lblPuntata.setBounds(71, 39, 55, 15);
-		lblPuntata.setBackground(SWTResourceManager.getColor(255, 204, 102));
-		lblPuntata.setText("PUNTATA");
-		
-		Label lblPuntatanumero = new Label(composite, SWT.NONE);
-		lblPuntatanumero.setBounds(71, 10, 55, 15);
-		lblPuntatanumero.setBackground(SWTResourceManager.getColor(255, 204, 102));
-		lblPuntatanumero.setText("0.0");
-		
-		Label lblVincita = new Label(composite, SWT.NONE);
-		lblVincita.setBounds(10, 39, 55, 15);
-		lblVincita.setBackground(SWTResourceManager.getColor(255, 204, 102));
-		lblVincita.setText("VINCITA");
-		
-		Label lblVincitanumero = new Label(composite, SWT.NONE);
-		lblVincitanumero.setBounds(10, 10, 55, 15);
-		lblVincitanumero.setBackground(SWTResourceManager.getColor(255, 204, 102));
-		lblVincitanumero.setText("0.0");
 	}
 }
