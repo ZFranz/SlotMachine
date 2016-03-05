@@ -76,6 +76,7 @@ public class SlotMachine {
 	 */
 	protected void createContents() {
 		shlZhoujackMachines = new Shell();
+		shlZhoujackMachines.setBackground(SWTResourceManager.getColor(102, 51, 255));
 		shlZhoujackMachines.setImage(SWTResourceManager.getImage("icon.png"));
 		shlZhoujackMachines.setSize(290, 405);
 		shlZhoujackMachines.setText("CHINA SLOTS");
@@ -300,7 +301,7 @@ public class SlotMachine {
 				
 			}
 		});
-		btnSpin.setBounds(74, 306, 128, 50);
+		btnSpin.setBounds(74, 307, 128, 50);
 		btnSpin.setText("SPIN");
 
 
