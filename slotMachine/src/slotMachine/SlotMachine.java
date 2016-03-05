@@ -99,13 +99,13 @@ public class SlotMachine {
 		lblTitolo.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 17, SWT.NORMAL));
 		lblTitolo.setBounds(0, 0, 274, 82);
 
-		Composite composite = new Composite(shlZhoujackMachines, SWT.EMBEDDED);
+		Composite composite = new Composite(shlZhoujackMachines, SWT.NONE);
 		composite.setBackground(SWTResourceManager.getColor(204, 0, 51));
 		composite.setBounds(0, 174, 274, 64);
 
 		Label lblSaldonumero = new Label(composite, SWT.NONE);
-		lblSaldonumero.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
-		lblSaldonumero.setBounds(205, 10, 55, 15);
+		lblSaldonumero.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 15, SWT.NORMAL));
+		lblSaldonumero.setBounds(205, 10, 55, 23);
 		lblSaldonumero.setBackground(SWTResourceManager.getColor(204, 0, 51));
 		lblSaldonumero.setText("0.0");
 
@@ -122,8 +122,8 @@ public class SlotMachine {
 		lblPuntata.setText("PUNTATA");
 
 		Label lblPuntatanumero = new Label(composite, SWT.NONE);
-		lblPuntatanumero.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
-		lblPuntatanumero.setBounds(86, 10, 55, 15);
+		lblPuntatanumero.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 15, SWT.NORMAL));
+		lblPuntatanumero.setBounds(86, 10, 55, 23);
 		lblPuntatanumero.setBackground(SWTResourceManager.getColor(204, 0, 51));
 		lblPuntatanumero.setText("0.0");
 
@@ -134,8 +134,8 @@ public class SlotMachine {
 		lblVincita.setText("VINCITA");
 
 		Label lblVincitanumero = new Label(composite, SWT.NONE);
-		lblVincitanumero.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
-		lblVincitanumero.setBounds(10, 10, 55, 15);
+		lblVincitanumero.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 15, SWT.NORMAL));
+		lblVincitanumero.setBounds(10, 10, 55, 23);
 		lblVincitanumero.setBackground(SWTResourceManager.getColor(204, 0, 51));
 		lblVincitanumero.setText("0.0");
 
