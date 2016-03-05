@@ -319,6 +319,17 @@ public class SlotMachine {
 						lblPuntatanumero.setText(String.valueOf(puntata));
 					}
 				}
+				if(e.keyCode == 115){
+					if (puntata > 0) {
+						puntata = puntata - 1;
+						saldo = saldo + 1;
+						lblSaldonumero.setText(String.valueOf(saldo));
+						lblPuntatanumero.setText(String.valueOf(puntata));
+					}
+				}
+				if(e.keyCode == 20){
+					
+				}
 			}
 		});
 		btnBet.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
