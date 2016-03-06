@@ -39,7 +39,7 @@ public class SlotMachine {
 	private int puntata = 0;
 	private int vincita = 0;
 	private int temp = 0;
-	private int a = 0;
+	private int a = 1;
 	private int b = 0;
 	private int c = 0;
 
@@ -184,10 +184,15 @@ public class SlotMachine {
 					public void run() {
 						j = 0;
 						for (int i = 0; i < giri; i++) {
-							j++;
-							if(j == 5) {
-								j = 0;
+							//j++;
+							j = (int)(Math.random() * 5);
+							for(j = a; j == a;){
+								j = (int)(Math.random() * 5);
 							}
+							a = j;
+							/*if(j == 5) {
+								j = 0;
+							}*/
 							Display.getDefault().asyncExec(new Runnable() {
 								public void run() {
 									lblA.setImage(SWTResourceManager.getImage(immagini.get(j)));
@@ -217,10 +222,12 @@ public class SlotMachine {
 					public void run() {
 						k = 1;
 						for (int i = 0; i < giri; i++) {
-							k++;
-							if(k == 5) {
-								k = 0;
+							k = (int)(Math.random() * 5);
+							for(k = b; k == b;){
+								k = (int)(Math.random() * 5);
 							}
+							b = k;
+							
 							Display.getDefault().asyncExec(new Runnable() {
 								public void run() {
 									lblB.setImage(SWTResourceManager.getImage(immagini.get(k)));
@@ -249,10 +256,12 @@ public class SlotMachine {
 					public void run() {
 						l = 2;
 						for (int i = 0; i < giri; i++) {
-							l++;
-							if(l == 5) {
-								l = 0;
+							l = (int)(Math.random() * 5);
+							for(l = c; l == c;){
+								l = (int)(Math.random() * 5);
 							}
+							c = l;
+	
 							Display.getDefault().asyncExec(new Runnable() {
 								public void run() {
 									lblC.setImage(SWTResourceManager.getImage(immagini.get(l)));
