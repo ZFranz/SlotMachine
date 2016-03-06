@@ -34,7 +34,7 @@ public class SlotMachine {
 	private int j = 0;
 	private int k = 1;
 	private int l = 2;
-	private final static int giri = 20;
+	private final static int giri = 15;
 	private int saldo = 10;
 	private int puntata = 0;
 	private int vincita = 0;
@@ -200,7 +200,7 @@ public class SlotMachine {
 							
 							});
 							try {
-								Thread.sleep(250);
+								Thread.sleep(200);
 							} catch (InterruptedException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -221,7 +221,7 @@ public class SlotMachine {
 					@Override
 					public void run() {
 						k = 1;
-						for (int i = 0; i < giri; i++) {
+						for (int i = 0; i < giri+7; i++) {
 							k = (int)(Math.random() * 5);
 							for(k = b; k == b;){
 								k = (int)(Math.random() * 5);
@@ -234,7 +234,7 @@ public class SlotMachine {
 								}
 							});
 							try {
-								Thread.sleep(250);
+								Thread.sleep(200);
 							} catch (InterruptedException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -255,7 +255,7 @@ public class SlotMachine {
 					@Override
 					public void run() {
 						l = 2;
-						for (int i = 0; i < giri; i++) {
+						for (int i = 0; i < giri+14; i++) {
 							l = (int)(Math.random() * 5);
 							for(l = c; l == c;){
 								l = (int)(Math.random() * 5);
@@ -268,7 +268,7 @@ public class SlotMachine {
 								}
 							});
 							try {
-								Thread.sleep(250);
+								Thread.sleep(200);
 							} catch (InterruptedException e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
