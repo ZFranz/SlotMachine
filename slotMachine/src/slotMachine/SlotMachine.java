@@ -36,12 +36,13 @@ public class SlotMachine {
 	private int l = 2;
 	private final static int giri = 15;
 	private int saldo = 10;
-	private int puntata = 0;
+	public int puntata = 0;
 	private int vincita = 0;
 	private int temp = 0;
 	private int a = 1;
 	private int b = 0;
 	private int c = 0;
+	private int x = 0;
 
 	/**
 	 * Launch the application.
@@ -68,6 +69,28 @@ public class SlotMachine {
 			if (!display.readAndDispatch()) {
 				display.sleep();
 			}
+		}
+	}
+	
+	public void premi(int e){
+		System.out.println("tasto premuto");
+		if(e == 119){
+			if(this.saldo > 0){
+				System.out.println("hai premuto w");
+				this.saldo = this.saldo-1;
+				this.puntata = this.puntata + 1;
+			}
+		}
+		if(e == 115){
+			if (this.puntata > 0) {
+				this.puntata = this.puntata - 1;
+				this.saldo = this.saldo + 1;
+			}
+		}
+		if(e == 114){
+			this.saldo = 15;
+			this.vincita = 0;
+			this.puntata = 0;
 		}
 	}
 
@@ -104,8 +127,8 @@ public class SlotMachine {
 		composite.setBounds(0, 174, 274, 64);
 
 		Label lblSaldonumero = new Label(composite, SWT.NONE);
-		lblSaldonumero.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 15, SWT.NORMAL));
-		lblSaldonumero.setBounds(205, 10, 55, 23);
+		lblSaldonumero.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 20, SWT.NORMAL));
+		lblSaldonumero.setBounds(205, 0, 55, 33);
 		lblSaldonumero.setBackground(SWTResourceManager.getColor(204, 0, 51));
 		lblSaldonumero.setText("0.0");
 
@@ -122,8 +145,8 @@ public class SlotMachine {
 		lblPuntata.setText("PUNTATA");
 
 		Label lblPuntatanumero = new Label(composite, SWT.NONE);
-		lblPuntatanumero.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 15, SWT.NORMAL));
-		lblPuntatanumero.setBounds(86, 10, 55, 23);
+		lblPuntatanumero.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 20, SWT.NORMAL));
+		lblPuntatanumero.setBounds(86, 0, 55, 33);
 		lblPuntatanumero.setBackground(SWTResourceManager.getColor(204, 0, 51));
 		lblPuntatanumero.setText("0.0");
 
@@ -134,12 +157,22 @@ public class SlotMachine {
 		lblVincita.setText("VINCITA");
 
 		Label lblVincitanumero = new Label(composite, SWT.NONE);
-		lblVincitanumero.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 15, SWT.NORMAL));
-		lblVincitanumero.setBounds(10, 10, 55, 23);
+		lblVincitanumero.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 20, SWT.NORMAL));
+		lblVincitanumero.setBounds(10, 0, 55, 33);
 		lblVincitanumero.setBackground(SWTResourceManager.getColor(204, 0, 51));
 		lblVincitanumero.setText("0.0");
 
 		Button btnReset = new Button(shlZhoujackMachines, SWT.FLAT);
+		btnReset.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				x = e.keyCode;
+				premi(x);
+				lblVincitanumero.setText(String.valueOf(vincita));
+				lblSaldonumero.setText(String.valueOf(saldo));
+				lblPuntatanumero.setText(String.valueOf(puntata));
+			}
+		});
 		btnReset.setForeground(SWTResourceManager.getColor(0, 255, 0));
 		btnReset.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
 		btnReset.addSelectionListener(new SelectionAdapter() {
@@ -164,9 +197,39 @@ public class SlotMachine {
 		
 		//dichiarazione tasti
 		Button btnSpin = new Button(shlZhoujackMachines, SWT.BORDER | SWT.FLAT | SWT.CENTER);
+		btnSpin.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				x = e.keyCode;
+				premi(x);
+				lblVincitanumero.setText(String.valueOf(vincita));
+				lblSaldonumero.setText(String.valueOf(saldo));
+				lblPuntatanumero.setText(String.valueOf(puntata));
+			}
+		});
 		Button btnBet = new Button(shlZhoujackMachines, SWT.FLAT);
 		Button btnBetAll = new Button(shlZhoujackMachines, SWT.FLAT);
+		btnBetAll.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				x = e.keyCode;
+				premi(x);
+				lblVincitanumero.setText(String.valueOf(vincita));
+				lblSaldonumero.setText(String.valueOf(saldo));
+				lblPuntatanumero.setText(String.valueOf(puntata));
+			}
+		});
 		Button btnOops = new Button(shlZhoujackMachines, SWT.FLAT);
+		btnOops.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				x = e.keyCode;
+				premi(x);
+				lblVincitanumero.setText(String.valueOf(vincita));
+				lblSaldonumero.setText(String.valueOf(saldo));
+				lblPuntatanumero.setText(String.valueOf(puntata));
+			}
+		});
 		
 		
 		btnSpin.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
@@ -284,6 +347,7 @@ public class SlotMachine {
 								btnBetAll.setEnabled(true);
 								btnOops.setEnabled(true);
 								
+								
 								//vinto o perso
 								if (l==k && k==j) {
 									vincita = puntata *2;
@@ -316,33 +380,11 @@ public class SlotMachine {
 		btnBet.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println("tasto premuto");
-				if(e.keyCode == 119){
-					if(saldo>0){
-						saldo = saldo-1;
-						lblSaldonumero.setText(String.valueOf(saldo));
-
-						puntata=puntata + 1;
-						lblPuntatanumero.setText(String.valueOf(puntata));
-					}
-				}
-				if(e.keyCode == 115){
-					if (puntata > 0) {
-						puntata = puntata - 1;
-						saldo = saldo + 1;
-						lblSaldonumero.setText(String.valueOf(saldo));
-						lblPuntatanumero.setText(String.valueOf(puntata));
-					}
-				}
-				if(e.keyCode == 114){
-					saldo = 10;
-					vincita = 0;
-					puntata = 0;
-					
-					lblVincitanumero.setText(String.valueOf(vincita));
-					lblSaldonumero.setText(String.valueOf(saldo));
-					lblPuntatanumero.setText(String.valueOf(puntata));
-				}
+				x = e.keyCode;
+				premi(x);
+				lblVincitanumero.setText(String.valueOf(vincita));
+				lblSaldonumero.setText(String.valueOf(saldo));
+				lblPuntatanumero.setText(String.valueOf(puntata));
 			}
 		});
 		btnBet.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
