@@ -334,8 +334,14 @@ public class SlotMachine {
 						lblPuntatanumero.setText(String.valueOf(puntata));
 					}
 				}
-				if(e.keyCode == 20){
+				if(e.keyCode == 114){
+					saldo = 10;
+					vincita = 0;
+					puntata = 0;
 					
+					lblVincitanumero.setText(String.valueOf(vincita));
+					lblSaldonumero.setText(String.valueOf(saldo));
+					lblPuntatanumero.setText(String.valueOf(puntata));
 				}
 			}
 		});
