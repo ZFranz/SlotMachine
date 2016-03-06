@@ -95,7 +95,7 @@ public class SlotMachine {
 		lblC.setBounds(182, 88, 80, 80);
 
 		Label lblTitolo = new Label(shlZhoujackMachines, SWT.WRAP);
-		lblTitolo.setImage(SWTResourceManager.getImage("C:\\Users\\pellizzarigiacomo\\git\\SlotMachine\\slotMachine\\titolo.jpg"));
+		lblTitolo.setImage(SWTResourceManager.getImage("titolo.jpg"));
 		lblTitolo.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 17, SWT.NORMAL));
 		lblTitolo.setBounds(0, 0, 274, 82);
 
@@ -201,7 +201,6 @@ public class SlotMachine {
 								e1.printStackTrace();
 							}
 						}
-						a = 1;
 						j = (int)(Math.random() * 5);
 						Display.getDefault().asyncExec(new Runnable() {
 							public void run() {
@@ -234,7 +233,6 @@ public class SlotMachine {
 								e1.printStackTrace();
 							}
 						}
-						c = 1;
 						k = (int)(Math.random() * 5);
 						Display.getDefault().asyncExec(new Runnable() {
 							public void run() {
