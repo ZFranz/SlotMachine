@@ -25,11 +25,11 @@ public class SlotMachine {
 
 	protected Shell shlZhoujackMachines;
 	ArrayList<String> immagini = new ArrayList<String>(){{
-		add("img/crome.jpg");
-		add("img/explorer.png");
-		add("img/nasa.png");
-		add("img/twitter.png");
-		add("img/xbox.png");
+		add("src/img/crome.jpg");
+		add("src/img/explorer.png");
+		add("src/img/nasa.png");
+		add("src/img/twitter.png");
+		add("src/img/xbox.png");
 	}};
 	private int j = 0;
 	private int k = 1;
@@ -100,25 +100,25 @@ public class SlotMachine {
 	protected void createContents() {
 		shlZhoujackMachines = new Shell();
 		shlZhoujackMachines.setBackground(SWTResourceManager.getColor(102, 51, 255));
-		shlZhoujackMachines.setImage(SWTResourceManager.getImage("img/icon.png"));
+		shlZhoujackMachines.setImage(SWTResourceManager.getImage("src/img/icon.png"));
 		shlZhoujackMachines.setSize(290, 405);
 		shlZhoujackMachines.setText("CHINA SLOTS");
-		shlZhoujackMachines.setBackgroundImage(SWTResourceManager.getImage("img/background.jpg"));
+		shlZhoujackMachines.setBackgroundImage(SWTResourceManager.getImage("src/img/background.jpg"));
 
 		Label lblA = new Label(shlZhoujackMachines, SWT.BORDER | SWT.WRAP);
-		lblA.setImage(SWTResourceManager.getImage("img/crome.jpg"));
+		lblA.setImage(SWTResourceManager.getImage("src/img/crome.jpg"));
 		lblA.setBounds(10, 88, 80, 80);
 
 		Label lblB = new Label(shlZhoujackMachines, SWT.BORDER | SWT.WRAP);
-		lblB.setImage(SWTResourceManager.getImage("img/explorer.png"));
+		lblB.setImage(SWTResourceManager.getImage("src/img/explorer.png"));
 		lblB.setBounds(96, 88, 80, 80);
 
 		Label lblC = new Label(shlZhoujackMachines, SWT.BORDER | SWT.WRAP);
-		lblC.setImage(SWTResourceManager.getImage("img/nasa.png"));
+		lblC.setImage(SWTResourceManager.getImage("src/img/nasa.png"));
 		lblC.setBounds(182, 88, 80, 80);
 
 		Label lblTitolo = new Label(shlZhoujackMachines, SWT.WRAP);
-		lblTitolo.setImage(SWTResourceManager.getImage("img/titolo.jpg"));
+		lblTitolo.setImage(SWTResourceManager.getImage("src/img/titolo.jpg"));
 		lblTitolo.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 17, SWT.NORMAL));
 		lblTitolo.setBounds(0, 0, 274, 82);
 
