@@ -4,6 +4,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,6 +16,10 @@ import javax.sound.sampled.*;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.wb.swt.SWTResourceManager;
+
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Composite;
@@ -242,6 +247,17 @@ public class SlotMachine {
 				btnBetAll.setEnabled(false);
 				btnOops.setEnabled(false);
 				
+				try {
+					File file = new File("audio/Pull.mp3");
+					FileInputStream fis = new FileInputStream(file);
+					BufferedInputStream bis = new BufferedInputStream(fis);
+					
+					try {
+						Player player = new Player(bis);
+						player.play();
+					} catch (JavaLayerException ex){}
+				} catch (IOException e1){}
+				
 				Thread thread1 = new Thread() {
 					@Override
 					public void run() {
@@ -349,7 +365,7 @@ public class SlotMachine {
 								
 								
 								//vinto o perso
-								if (l==k && k==j) {
+								if (j == k && k == l) {
 									vincita = puntata *2;
 									saldo = saldo + vincita;
 									puntata = 0;
@@ -357,6 +373,16 @@ public class SlotMachine {
 									lblVincitanumero.setText(String.valueOf(vincita));
 									lblSaldonumero.setText(String.valueOf(saldo));
 									System.out.println("hai vinto");
+									try {
+										File file = new File("audio/Remove_coins.mp3");
+										FileInputStream fis = new FileInputStream(file);
+										BufferedInputStream bis = new BufferedInputStream(fis);
+										
+										try {
+											Player player = new Player(bis);
+											player.play();
+										} catch (JavaLayerException ex){}
+									} catch (IOException e){}
 								} else {
 									puntata = 0;
 									lblPuntatanumero.setText(String.valueOf(puntata));
@@ -397,6 +423,17 @@ public class SlotMachine {
 
 					puntata=puntata + 1;
 					lblPuntatanumero.setText(String.valueOf(puntata));
+					
+					try {
+						File file = new File("audio/Coin_insert.mp3");
+						FileInputStream fis = new FileInputStream(file);
+						BufferedInputStream bis = new BufferedInputStream(fis);
+						
+						try {
+							Player player = new Player(bis);
+							player.play();
+						} catch (JavaLayerException ex){}
+					} catch (IOException e1){}
 				}
 
 			}
@@ -416,7 +453,16 @@ public class SlotMachine {
 				lblVincitanumero.setText(String.valueOf(vincita));
 				lblSaldonumero.setText(String.valueOf(saldo));
 				lblPuntatanumero.setText(String.valueOf(puntata));
-				
+				try {
+					File file = new File("audio/Coin_insert.mp3");
+					FileInputStream fis = new FileInputStream(file);
+					BufferedInputStream bis = new BufferedInputStream(fis);
+					
+					try {
+						Player player = new Player(bis);
+						player.play();
+					} catch (JavaLayerException ex){}
+				} catch (IOException e1){}
 			}
 		});
 		btnBetAll.setBounds(187, 250, 75, 50);
