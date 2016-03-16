@@ -40,7 +40,7 @@ public class SlotMachine {
 	private int k = 1;
 	private int l = 2;
 	private final static int giri = 15;
-	private int saldo = 10;
+	private int saldo = 30;
 	public int puntata = 0;
 	private int vincita = 0;
 	private int temp = 0;
@@ -247,17 +247,6 @@ public class SlotMachine {
 				btnBetAll.setEnabled(false);
 				btnOops.setEnabled(false);
 				
-				try {
-					File file = new File("audio/Pull.mp3");
-					FileInputStream fis = new FileInputStream(file);
-					BufferedInputStream bis = new BufferedInputStream(fis);
-					
-					try {
-						Player player = new Player(bis);
-						player.play();
-					} catch (JavaLayerException ex){}
-				} catch (IOException e1){}
-				
 				Thread thread1 = new Thread() {
 					@Override
 					public void run() {
@@ -333,6 +322,7 @@ public class SlotMachine {
 				Thread thread3 = new Thread() {
 					@Override
 					public void run() {
+						
 						l = 2;
 						for (int i = 0; i < giri+14; i++) {
 							l = (int)(Math.random() * 5);
@@ -373,16 +363,25 @@ public class SlotMachine {
 									lblVincitanumero.setText(String.valueOf(vincita));
 									lblSaldonumero.setText(String.valueOf(saldo));
 									System.out.println("hai vinto");
-									try {
-										File file = new File("audio/Remove_coins.mp3");
-										FileInputStream fis = new FileInputStream(file);
-										BufferedInputStream bis = new BufferedInputStream(fis);
-										
-										try {
-											Player player = new Player(bis);
-											player.play();
-										} catch (JavaLayerException ex){}
-									} catch (IOException e){}
+									
+									Thread threadremove = new Thread() {
+										@Override
+										public void run() {
+											try {
+												File file = new File("audio/Remove_coins.mp3");
+												FileInputStream fis = new FileInputStream(file);
+												BufferedInputStream bis = new BufferedInputStream(fis);
+												
+												try {
+													Player player = new Player(bis);
+													player.play();
+												} catch (JavaLayerException ex){}
+											} catch (IOException e1){}
+											
+										}
+
+									};
+									threadremove.start();
 								} else {
 									puntata = 0;
 									lblPuntatanumero.setText(String.valueOf(puntata));
@@ -395,6 +394,27 @@ public class SlotMachine {
 
 				};
 				thread3.start();
+				
+				Thread threadpull = new Thread() {
+					@Override
+					public void run() {
+						try {
+							File file = new File("audio/Pull.mp3");
+							FileInputStream fis = new FileInputStream(file);
+							BufferedInputStream bis = new BufferedInputStream(fis);
+							
+							try {
+								Player player = new Player(bis);
+								player.play();
+							} catch (JavaLayerException ex){}
+						} catch (IOException e1){}
+						
+					}
+
+				};
+				threadpull.start();
+				
+				
 				
 			}
 		});
@@ -424,16 +444,24 @@ public class SlotMachine {
 					puntata=puntata + 1;
 					lblPuntatanumero.setText(String.valueOf(puntata));
 					
-					try {
-						File file = new File("audio/Coin_insert.mp3");
-						FileInputStream fis = new FileInputStream(file);
-						BufferedInputStream bis = new BufferedInputStream(fis);
-						
-						try {
-							Player player = new Player(bis);
-							player.play();
-						} catch (JavaLayerException ex){}
-					} catch (IOException e1){}
+					Thread threadcoin = new Thread() {
+						@Override
+						public void run() {
+							try {
+								File file = new File("audio/Coin_insert.mp3");
+								FileInputStream fis = new FileInputStream(file);
+								BufferedInputStream bis = new BufferedInputStream(fis);
+								
+								try {
+									Player player = new Player(bis);
+									player.play();
+								} catch (JavaLayerException ex){}
+							} catch (IOException e1){}
+							
+						}
+
+					};
+					threadcoin.start();
 				}
 
 			}
@@ -453,16 +481,25 @@ public class SlotMachine {
 				lblVincitanumero.setText(String.valueOf(vincita));
 				lblSaldonumero.setText(String.valueOf(saldo));
 				lblPuntatanumero.setText(String.valueOf(puntata));
-				try {
-					File file = new File("audio/Coin_insert.mp3");
-					FileInputStream fis = new FileInputStream(file);
-					BufferedInputStream bis = new BufferedInputStream(fis);
-					
-					try {
-						Player player = new Player(bis);
-						player.play();
-					} catch (JavaLayerException ex){}
-				} catch (IOException e1){}
+
+				Thread threadcoin = new Thread() {
+					@Override
+					public void run() {
+						try {
+							File file = new File("audio/Coin_insert.mp3");
+							FileInputStream fis = new FileInputStream(file);
+							BufferedInputStream bis = new BufferedInputStream(fis);
+							
+							try {
+								Player player = new Player(bis);
+								player.play();
+							} catch (JavaLayerException ex){}
+						} catch (IOException e1){}
+						
+					}
+
+				};
+				threadcoin.start();
 			}
 		});
 		btnBetAll.setBounds(187, 250, 75, 50);
