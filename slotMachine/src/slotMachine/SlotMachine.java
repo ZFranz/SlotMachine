@@ -106,40 +106,40 @@ public class SlotMachine {
 		shlZhoujackMachines = new Shell();
 		shlZhoujackMachines.setBackground(SWTResourceManager.getColor(102, 51, 255));
 		shlZhoujackMachines.setImage(SWTResourceManager.getImage("img/icon.png"));
-		shlZhoujackMachines.setSize(290, 405);
+		shlZhoujackMachines.setSize(403, 405);
 		shlZhoujackMachines.setText("CHINA SLOTS");
 		shlZhoujackMachines.setBackgroundImage(SWTResourceManager.getImage("img/background.jpg"));
 
 		Label lblA = new Label(shlZhoujackMachines, SWT.BORDER | SWT.WRAP);
 		lblA.setImage(SWTResourceManager.getImage("img/crome.jpg"));
-		lblA.setBounds(10, 88, 80, 80);
+		lblA.setBounds(10, 112, 118, 118);
 
 		Label lblB = new Label(shlZhoujackMachines, SWT.BORDER | SWT.WRAP);
 		lblB.setImage(SWTResourceManager.getImage("img/explorer.png"));
-		lblB.setBounds(96, 88, 80, 80);
+		lblB.setBounds(134, 112, 118, 118);
 
 		Label lblC = new Label(shlZhoujackMachines, SWT.BORDER | SWT.WRAP);
 		lblC.setImage(SWTResourceManager.getImage("img/nasa.png"));
-		lblC.setBounds(182, 88, 80, 80);
+		lblC.setBounds(258, 112, 118, 118);
 
 		Label lblTitolo = new Label(shlZhoujackMachines, SWT.WRAP);
 		lblTitolo.setImage(SWTResourceManager.getImage("img/titolo.jpg"));
 		lblTitolo.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 17, SWT.NORMAL));
-		lblTitolo.setBounds(0, 0, 274, 82);
+		lblTitolo.setBounds(0, 0, 387, 106);
 
 		Composite composite = new Composite(shlZhoujackMachines, SWT.NONE);
 		composite.setBackground(SWTResourceManager.getColor(204, 0, 51));
-		composite.setBounds(0, 174, 274, 64);
+		composite.setBounds(10, 236, 368, 64);
 
 		Label lblSaldonumero = new Label(composite, SWT.NONE);
 		lblSaldonumero.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 20, SWT.NORMAL));
-		lblSaldonumero.setBounds(205, 0, 55, 33);
+		lblSaldonumero.setBounds(303, 0, 55, 33);
 		lblSaldonumero.setBackground(SWTResourceManager.getColor(204, 0, 51));
 		lblSaldonumero.setText("0.0");
 
 		Label lblSaldo = new Label(composite, SWT.NONE);
 		lblSaldo.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold", 9, SWT.NORMAL));
-		lblSaldo.setBounds(205, 39, 55, 15);
+		lblSaldo.setBounds(303, 39, 55, 15);
 		lblSaldo.setBackground(SWTResourceManager.getColor(204, 0, 51));
 		lblSaldo.setText("SALDO");
 
@@ -192,7 +192,7 @@ public class SlotMachine {
 				lblPuntatanumero.setText(String.valueOf(puntata));
 			}
 		});
-		btnReset.setBounds(10, 250, 75, 50);
+		btnReset.setBounds(10, 306, 43, 50);
 		btnReset.setText("RESET");
 		
 		//inizalizzazione schermata
@@ -418,7 +418,7 @@ public class SlotMachine {
 				
 			}
 		});
-		btnSpin.setBounds(74, 307, 128, 50);
+		btnSpin.setBounds(251, 306, 126, 50);
 		btnSpin.setText("SPIN");
 
 
@@ -466,7 +466,7 @@ public class SlotMachine {
 
 			}
 		});
-		btnBet.setBounds(96, 244, 80, 25);
+		btnBet.setBounds(59, 306, 55, 50);
 		btnBet.setText("BET");
 
 		
@@ -502,7 +502,7 @@ public class SlotMachine {
 				threadcoin.start();
 			}
 		});
-		btnBetAll.setBounds(187, 250, 75, 50);
+		btnBetAll.setBounds(182, 306, 55, 50);
 		btnBetAll.setText("BET ALL");
 		
 		
@@ -518,7 +518,7 @@ public class SlotMachine {
 			}
 		});
 		btnOops.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
-		btnOops.setBounds(96, 275, 80, 25);
+		btnOops.setBounds(121, 306, 55, 50);
 		btnOops.setText("OOPS");
 	}
 }
