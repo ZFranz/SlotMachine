@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import javax.sound.sampled.*;
 
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.wb.swt.SWTResourceManager;
@@ -183,13 +184,18 @@ public class SlotMachine {
 		btnReset.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				saldo = 10;
-				vincita = 0;
-				puntata = 0;
-				
-				lblVincitanumero.setText(String.valueOf(vincita));
-				lblSaldonumero.setText(String.valueOf(saldo));
-				lblPuntatanumero.setText(String.valueOf(puntata));
+				MessageDialog message = new MessageDialog (null, "Title", null, "Question", MessageDialog.QUESTION, new String[] {"Yes", "No"}, 0);
+				int result = message.open();
+				System.out.println(result);
+				if (result == 0) {
+					saldo = 30;
+					vincita = 0;
+					puntata = 0;
+					
+					lblVincitanumero.setText(String.valueOf(vincita));
+					lblSaldonumero.setText(String.valueOf(saldo));
+					lblPuntatanumero.setText(String.valueOf(puntata));
+				}
 			}
 		});
 		btnReset.setBounds(10, 306, 43, 50);
