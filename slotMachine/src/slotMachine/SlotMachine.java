@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import javax.sound.sampled.*;
 
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Label;
@@ -184,7 +185,7 @@ public class SlotMachine {
 		btnReset.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				MessageDialog message = new MessageDialog (null, "Title", null, "Question", MessageDialog.QUESTION, new String[] {"Yes", "No"}, 0);
+				MessageDialog message = new MessageDialog (null, "Reset", null, "sei sicuro?", MessageDialog.QUESTION, new String[] {"SI", "NO"}, 0);
 				int result = message.open();
 				System.out.println(result);
 				if (result == 0) {
@@ -198,7 +199,7 @@ public class SlotMachine {
 				}
 			}
 		});
-		btnReset.setBounds(10, 306, 43, 50);
+		btnReset.setBounds(10, 306, 40, 50);
 		btnReset.setText("RESET");
 		
 		//inizalizzazione schermata
@@ -424,7 +425,7 @@ public class SlotMachine {
 				
 			}
 		});
-		btnSpin.setBounds(251, 306, 126, 50);
+		btnSpin.setBounds(300, 306, 80, 50);
 		btnSpin.setText("SPIN");
 
 
@@ -472,7 +473,7 @@ public class SlotMachine {
 
 			}
 		});
-		btnBet.setBounds(59, 306, 55, 50);
+		btnBet.setBounds(60, 306, 40, 50);
 		btnBet.setText("BET");
 
 		
@@ -508,7 +509,7 @@ public class SlotMachine {
 				threadcoin.start();
 			}
 		});
-		btnBetAll.setBounds(182, 306, 55, 50);
+		btnBetAll.setBounds(160, 306, 55, 50);
 		btnBetAll.setText("BET ALL");
 		
 		
@@ -524,7 +525,19 @@ public class SlotMachine {
 			}
 		});
 		btnOops.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
-		btnOops.setBounds(121, 306, 55, 50);
+		btnOops.setBounds(110, 306, 40, 50);
 		btnOops.setText("OOPS");
+		
+		Button btnPayTable = new Button(shlZhoujackMachines, SWT.NONE);
+		btnPayTable.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				MessageDialog message = new MessageDialog (null, "Pay Table", null, "Per vincere servono tre icone uguali, a vincita è il doppio della puntata!\nSe ottieni due icone uguali ti viene restituito il costo della giocata!", MessageDialog.INFORMATION, new String[] {"OK"}, 0);
+				message.open();
+			}
+		});
+		btnPayTable.setFont(SWTResourceManager.getFont("Gill Sans Ultra Bold Condensed", 9, SWT.NORMAL));
+		btnPayTable.setBounds(225, 306, 65, 50);
+		btnPayTable.setText("Pay Table");
 	}
 }
